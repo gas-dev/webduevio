@@ -1,0 +1,212 @@
+/* Visual tuning to stay closer to the original test.duevio.com design.
+   This layer intentionally changes presentation only, not content or structure. */
+
+:root{
+  --radius:16px;
+  --radius-sm:10px;
+  --shadow:0 12px 34px rgba(34,56,111,.08);
+  --container:1160px;
+}
+
+body{
+  line-height:1.5;
+  letter-spacing:-.003em;
+}
+
+.container{width:min(calc(100% - 48px),var(--container))}
+.narrow{width:min(calc(100% - 48px),940px)}
+
+.site-header{
+  background:#fff;
+  backdrop-filter:none;
+  border-bottom:1px solid #e6ebf1;
+}
+.header-inner{height:72px;gap:20px}
+.brand img{width:142px}
+.desktop-nav{gap:18px}
+.desktop-nav a{font-size:13.5px;font-weight:650;color:#38445a;padding:9px 0}
+.desktop-nav a:after{height:2px;bottom:1px}
+.header-actions{gap:8px}
+.language-button{height:36px;border-radius:7px;padding:0 9px}
+.language-menu{top:43px;border-radius:8px;box-shadow:0 12px 30px rgba(23,39,79,.12)}
+
+.button{
+  min-height:44px;
+  padding:0 18px;
+  border-radius:7px;
+  font-size:14px;
+  font-weight:750;
+}
+.button.compact{min-height:36px;border-radius:7px}
+.button-primary{
+  background:var(--teal);
+  box-shadow:none;
+}
+.button-primary:hover{background:#34acad}
+.button-secondary{border-color:#d6dde7;box-shadow:none}
+.button-secondary:hover{box-shadow:none}
+.button:hover{transform:none}
+.button-row{gap:10px;margin-top:24px}
+
+.hero{
+  background:#fff;
+  border-bottom:1px solid #e7ebf0;
+}
+.hero-home{padding:68px 0 70px}
+.subhero{padding:58px 0 62px}
+.hero-grid{
+  grid-template-columns:minmax(0,1.08fr) minmax(360px,.92fr);
+  gap:52px;
+}
+.eyebrow{
+  margin-bottom:10px;
+  font-size:12px;
+  letter-spacing:.09em;
+}
+h1{
+  font-size:clamp(39px,4.7vw,61px);
+  line-height:1.075;
+  letter-spacing:-.032em;
+  max-width:840px;
+}
+.subhero h1{font-size:clamp(36px,4vw,53px)}
+.lead{
+  font-size:18px;
+  line-height:1.58;
+  margin-top:20px;
+  max-width:720px;
+}
+
+.overview-card{
+  border-radius:12px;
+  padding:22px;
+  box-shadow:0 8px 26px rgba(34,56,111,.07);
+  border-color:#e0e6ed;
+}
+.overview-card:before{display:none}
+.overview-card h2{font-size:21px;margin:14px 0 18px}
+.overview-head{font-size:12px}
+.metric-grid{gap:8px}
+.metric-grid>div{padding:12px;border-radius:8px;background:#f6f8fa}
+.metric-grid span{font-size:11.5px}
+.metric-grid strong{font-size:14px}
+.highlight-list{margin-top:15px;padding-top:13px}
+.highlight-list p{margin:7px 0;font-size:12.5px}
+
+.section{padding:72px 0}
+.section-light{background:#f6f8fa}
+.section h2{
+  font-size:clamp(30px,3.55vw,43px);
+  line-height:1.12;
+  letter-spacing:-.021em;
+  max-width:850px;
+}
+.section-lead{font-size:17px;line-height:1.58;margin-top:15px;max-width:800px}
+
+.problem-grid{gap:10px;margin-top:28px}
+.problem-grid div{
+  border-radius:8px;
+  padding:16px 17px;
+  font-size:14px;
+  box-shadow:none;
+}
+
+.feature-grid{gap:14px;margin-top:30px}
+.feature-card,.module-card,.sector-card{
+  border-radius:9px;
+  padding:21px;
+  box-shadow:none;
+  border-color:#e0e5eb;
+}
+.feature-icon,.module-card>span,.sector-card>span{
+  width:36px;
+  height:36px;
+  border-radius:7px;
+  margin-bottom:15px;
+  background:rgba(59,184,185,.12);
+}
+.feature-card h3,.module-card h3,.sector-card h3{font-size:18px;margin-bottom:8px}
+.feature-card p,.module-card p,.sector-card p{font-size:14px;line-height:1.55}
+
+.comparison-wrap{margin-top:28px;border-radius:10px}
+.comparison-table th,.comparison-table td{padding:14px 16px}
+
+.pill-grid{gap:8px;margin-top:23px}
+.pill-grid span,.integration-grid span{
+  border-radius:7px;
+  padding:9px 12px;
+  font-size:13px;
+  background:#fff;
+}
+
+.module-card ul,.sector-card ul,.price-card ul{margin-top:15px}
+.module-card li,.sector-card li,.price-card li{padding:7px 0 7px 22px;font-size:13px}
+
+.steps-grid{gap:12px;margin-top:28px}
+.steps-grid article{padding:20px;border-radius:9px}
+.steps-grid article>span{width:32px;height:32px;margin-bottom:13px}
+.steps-grid h3{font-size:17px}
+.steps-grid p{font-size:14px}
+
+.integration-grid{gap:9px;margin-top:25px}
+.integration-grid span{padding:15px}
+
+.pricing-grid{gap:14px}
+.price-card{border-radius:10px;padding:24px}
+.price-card.featured{box-shadow:0 8px 25px rgba(59,184,185,.08)}
+.price-card h2{font-size:25px}
+.price{margin:15px 0}
+.price strong{font-size:34px}
+.price-description{min-height:98px}
+
+.payment-strip{
+  margin-top:34px;
+  border-radius:9px;
+  padding:18px;
+  gap:20px;
+  background:#f8f9fb;
+}
+
+.plan-selector{gap:9px;margin:18px 0}
+.plan-selector span{border-radius:8px;padding:14px}
+.plan-selector input:checked+span{box-shadow:none}
+.form-card{border-radius:10px;padding:22px;box-shadow:none}
+.form-card input,.form-card select,.form-card textarea{border-radius:7px;padding:10px 11px}
+.summary-card{border-radius:9px;padding:18px;background:#f8f9fb}
+.signup-layout{gap:22px}
+
+.legal-page{padding:60px 0 76px;background:#f7f8fa}
+.legal-body{border-radius:10px;padding:28px}
+.legal-callout{border-radius:8px}
+
+.site-footer{padding:46px 0 18px}
+.footer-grid{gap:32px}
+.footer-brand img{width:142px;margin-bottom:14px}
+.footer-brand p,.site-footer a{font-size:13px}
+.footer-bottom{margin-top:30px;padding-top:16px}
+
+.cookie-banner{
+  border-radius:9px;
+  padding:16px 18px;
+  box-shadow:0 14px 42px rgba(23,39,79,.16);
+}
+.modal{border-radius:10px}
+
+@media(max-width:1050px){
+  .hero-grid{grid-template-columns:1fr 390px;gap:32px}
+}
+@media(max-width:860px){
+  .hero-home,.subhero{padding:52px 0}
+  .hero-grid{grid-template-columns:1fr}
+  .overview-card{max-width:600px}
+}
+@media(max-width:620px){
+  .container,.narrow,.legal-container{width:min(calc(100% - 30px),var(--container))}
+  .header-inner{height:66px}
+  .brand img{width:126px}
+  .hero-home,.subhero{padding:42px 0}
+  h1{font-size:37px}
+  .lead{font-size:16.5px}
+  .section{padding:56px 0}
+  .section h2{font-size:31px}
+}
