@@ -33,9 +33,6 @@
       html=html.replace('href="fr/" data-lang-link="fr"','href="../fr/" data-lang-link="fr"');
       html=html.replace('href="ru/" data-lang-link="ru"','href="../ru/" data-lang-link="ru"');
       html=html.replace('role="menuitem" href="" data-lang-link="en"','role="menuitem" href="../" data-lang-link="en"');
-      html=html.replace('</div>\n        </div>\n        <a class="button button-ghost compact desktop-cta"', '<a role="menuitem" href="../mt/" data-lang-link="mt">Malti</a></div>\n        </div>\n        <a class="button button-ghost compact desktop-cta"');
-      html=html.replace('<script src="../assets/js/app.js" defer></script>','<script src="../assets/js/app.js" defer></script><script src="../assets/js/lang-ui.js" defer></script>');
-      html=html.replace('<script src="assets/js/app.js" defer></script>','<script src="../assets/js/app.js" defer></script><script src="../assets/js/lang-ui.js" defer></script>');
       html=html.replace('<title>Duevio | AML operations from onboarding to audit</title>','<title>Duevio | Operazzjonijiet AML mill-onboarding sal-awditjar</title>');
       html=html.replace('<link rel="canonical" href="https://test.duevio.com/">','<link rel="canonical" href="https://test.duevio.com/mt/">');
       document.open();document.write(html);document.close();
