@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url><loc>https://test.duevio.com/</loc><xhtml:link rel="alternate" hreflang="en" href="https://test.duevio.com/"/><xhtml:link rel="alternate" hreflang="it" href="https://test.duevio.com/it/"/><xhtml:link rel="alternate" hreflang="de" href="https://test.duevio.com/de/"/><xhtml:link rel="alternate" hreflang="es" href="https://test.duevio.com/es/"/><xhtml:link rel="alternate" hreflang="fr" href="https://test.duevio.com/fr/"/><xhtml:link rel="alternate" hreflang="ru" href="https://test.duevio.com/ru/"/></url>
+  <url><loc>https://test.duevio.com/it/</loc></url>
+  <url><loc>https://test.duevio.com/de/</loc></url>
+  <url><loc>https://test.duevio.com/es/</loc></url>
+  <url><loc>https://test.duevio.com/fr/</loc></url>
+  <url><loc>https://test.duevio.com/ru/</loc></url>
+</urlset>
