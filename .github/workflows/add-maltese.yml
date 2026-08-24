@@ -12,7 +12,7 @@ jobs:
   localize:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v4
       - name: Build Maltese locale and language UI
         shell: bash
         run: |
@@ -30,12 +30,12 @@ jobs:
 
           source = (root/'it/index.html').read_text(encoding='utf-8')
           page = source
-          page = re.sub(r'<html lang="it" data-lang="it"', '<html lang="mt" data-lang="mt"', page, count=1)
+          page = re.sub(r'<html([^>]*)data-lang="it"([^>]*)lang="it"([^>]*)>', r'<html\1data-lang="mt"\2lang="mt"\3>', page, count=1)
           page = page.replace('https://test.duevio.com/it/', 'https://test.duevio.com/mt/')
           page = re.sub(r'<title>.*?</title>', '<title>Duevio | Operazzjonijiet AML mill-onboarding sal-awditjar</title>', page, count=1, flags=re.S)
-          page = re.sub(r'<meta name="description" content="[^"]*">', '<meta name="description" content="Immaniġġja KYC, fajls tal-klijenti, sjieda, reviżjonijiet, workflows u evidenza ta’ awditjar f’workspace AML wieħed.">', page, count=1)
-          page = re.sub(r'<meta property="og:title" content="[^"]*">', '<meta property="og:title" content="Duevio | Operazzjonijiet AML mill-onboarding sal-awditjar">', page, count=1)
-          page = re.sub(r'<meta property="og:description" content="[^"]*">', '<meta property="og:description" content="Workspace AML internazzjonali għal onboarding, KYC, reviżjonijiet, workflow u evidenza.">', page, count=1)
+          page = re.sub(r'<meta[^>]+name="description"[^>]*>', '<meta content="Immaniġġja KYC, fajls tal-klijenti, sjieda, reviżjonijiet, workflows u evidenza ta’ awditjar f’workspace AML wieħed." name="description"/>', page, count=1)
+          page = re.sub(r'<meta[^>]+property="og:title"[^>]*>', '<meta content="Duevio | Operazzjonijiet AML mill-onboarding sal-awditjar" property="og:title"/>', page, count=1)
+          page = re.sub(r'<meta[^>]+property="og:description"[^>]*>', '<meta content="Workspace AML internazzjonali għal onboarding, KYC, reviżjonijiet, workflow u evidenza." property="og:description"/>', page, count=1)
 
           mt_dir = root/'mt'
           mt_dir.mkdir(exist_ok=True)
@@ -45,13 +45,11 @@ jobs:
           for p in html_files:
             text = p.read_text(encoding='utf-8')
             if 'hreflang="mt"' not in text:
-              marker = '<link rel="alternate" hreflang="ru" href="https://test.duevio.com/ru/">'
-              if marker in text:
-                text = text.replace(marker, marker + '\n  <link rel="alternate" hreflang="mt" href="https://test.duevio.com/mt/">')
-              else:
-                marker2 = '<link href="https://test.duevio.com/ru/" hreflang="ru" rel="alternate"/>'
-                text = text.replace(marker2, marker2 + '\n<link href="https://test.duevio.com/mt/" hreflang="mt" rel="alternate"/>')
-            if 'assets/js/lang-ui.js' not in text:
+              m = re.search(r'(<link[^>]+hreflang="ru"[^>]*>)', text)
+              if m:
+                tag = '<link href="https://test.duevio.com/mt/" hreflang="mt" rel="alternate"/>' if p.parent != root else '<link rel="alternate" hreflang="mt" href="https://test.duevio.com/mt/">'
+                text = text[:m.end()] + '\n' + tag + text[m.end():]
+            if 'lang-ui.js' not in text:
               if p.parent == root:
                 text = text.replace('<script src="assets/js/app.js" defer></script>', '<script src="assets/js/app.js" defer></script>\n  <script src="assets/js/lang-ui.js" defer></script>')
               else:
@@ -59,16 +57,17 @@ jobs:
                 text = text.replace('<script src="../assets/js/app.js" defer></script>', '<script src="../assets/js/app.js" defer></script>\n  <script src="../assets/js/lang-ui.js" defer></script>')
             p.write_text(text, encoding='utf-8')
 
-          app = (root/'assets/js/app.js').read_text(encoding='utf-8')
-          if 'mt: {' not in app:
+          app_path = root/'assets/js/app.js'
+          app = app_path.read_text(encoding='utf-8')
+          if '    mt: {' not in app:
             needle = "    ru: {\n"
             mtblock = "    mt: {\n      invalid: 'Jekk jogħġbok imla l-oqsma obbligatorji kollha u ċċekkja li l-passwords jaqblu.',\n      signupOk: 'Il-preview ġiet ivvalidata. Il-checkout tal-produzzjoni għadu mhux konness f’dan ir-repository.',\n      demoOk: 'Il-preview ġiet ivvalidata. L-endpoint tal-produzzjoni għat-talbiet tad-demo għadu mhux konness f’dan ir-repository.',\n      contact: 'Ikkuntattjana',\n      users: 'Setup miftiehem',\n      requestSetup: 'Itlob setup',\n      commercialOk: 'Il-preview ġiet ivvalidata. Il-follow-up kummerċjali tal-produzzjoni għadu mhux konness f’dan ir-repository.',\n      next2Title: 'Follow-up kummerċjali',\n      next2Text: 'Nirrevedu miegħek il-pjan magħżul, id-daqs tat-tim u l-ħtiġijiet ta’ implementazzjoni.',\n      next3Title: 'Triq ta’ implementazzjoni',\n      next3Text: 'Naqblu fuq setup, appoġġ għall-onboarding u prijoritajiet ta’ integrazzjoni qabel l-attivazzjoni.'\n    },\n"
             app = app.replace(needle, mtblock + needle, 1)
-          (root/'assets/js/app.js').write_text(app, encoding='utf-8')
+          app_path.write_text(app, encoding='utf-8')
 
           cssp = root/'assets/css/global-design.css'
           css = cssp.read_text(encoding='utf-8')
-          flag_css = '''\n/* International language selector */\n.language-menu a{display:flex!important;align-items:center;gap:9px}\n.lang-flag{font-size:17px;line-height:1;flex:0 0 22px}\n.language-button .language-code{min-width:48px;text-align:left}\n'''
+          flag_css = '''\n/* International language selector */\n.language-menu a{display:flex!important;align-items:center;gap:9px}\n.lang-flag{font-size:17px;line-height:1;flex:0 0 22px}\n.language-button .language-code{min-width:52px;text-align:left}\n'''
           if 'International language selector' not in css:
             cssp.write_text(css + flag_css, encoding='utf-8')
 
@@ -87,9 +86,11 @@ jobs:
           from pathlib import Path
           en=json.loads(Path('assets/i18n/en.json').read_text())
           mt=json.loads(Path('assets/i18n/mt.json').read_text())
+          page=Path('mt/index.html').read_text()
           assert set(en)==set(mt), (len(en),len(mt),len(set(en)-set(mt)))
-          assert Path('mt/index.html').exists()
-          assert 'data-lang="mt"' in Path('mt/index.html').read_text()
+          assert 'data-lang="mt"' in page
+          assert 'lang="mt"' in page
+          assert 'lang-ui.js' in page
           print('Maltese keys:', len(mt))
           PY
       - name: Commit Maltese localization
