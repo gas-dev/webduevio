@@ -3,7 +3,7 @@ name: Bootstrap Duevio site
 on:
   push:
     paths:
-      - 'site.ready'
+      - 'site.xz.ready'
 
 permissions:
   contents: write
@@ -15,15 +15,24 @@ jobs:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: Rebuild site files
+      - name: Rebuild and verify site files
         shell: bash
         run: |
           set -euo pipefail
-          test -f site.ready
-          cat site.part.* > site.tar.gz.b64
-          base64 --decode site.tar.gz.b64 > site.tar.gz
-          tar -xzf site.tar.gz
-          rm -f site.tar.gz site.tar.gz.b64 site.part.* site.ready
+          test -f site.xz.ready
+          cat site.xz.part.* > site.tar.xz.b64
+          base64 --decode site.tar.xz.b64 > site.tar.xz
+          echo '53b8ca0f41c211b54d16a0937955fdef296547364002cbe7c8a46cb9a8b4ef15  site.tar.xz' | sha256sum -c -
+          xz -dc site.tar.xz | tar -xf -
+          test -f index.html
+          test -f assets/css/styles.css
+          test -f assets/js/app.js
+          test -f it/index.html
+          test -f de/index.html
+          test -f es/index.html
+          test -f fr/index.html
+          test -f ru/index.html
+          rm -f site.tar.xz site.tar.xz.b64 site.xz.part.* site.xz.ready site.part.* site.ready
       - name: Commit generated site
         shell: bash
         run: |
