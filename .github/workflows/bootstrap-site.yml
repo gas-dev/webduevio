@@ -20,7 +20,7 @@ jobs:
         run: |
           set -euo pipefail
           test -f site.xz.ready
-          cat site.xz.part.* > site.tar.xz.b64
+          cat site.xz.chunk.* > site.tar.xz.b64
           base64 --decode site.tar.xz.b64 > site.tar.xz
           echo '63f6ba2daf7ea348c0fbbcda7ac17aeb6f8818980d22a44dee4da4e7b446d2b5  site.tar.xz' | sha256sum -c -
           xz -dc site.tar.xz | tar -xf -
@@ -32,7 +32,7 @@ jobs:
           test -f es/index.html
           test -f fr/index.html
           test -f ru/index.html
-          rm -f site.tar.xz site.tar.xz.b64 site.xz.part.* site.xz.ready site.part.* site.ready
+          rm -f site.tar.xz site.tar.xz.b64 site.xz.chunk.* site.xz.part.* site.xz.ready site.part.* site.ready
       - name: Commit generated site
         shell: bash
         run: |
