@@ -22,7 +22,7 @@ jobs:
           test -f site.xz.ready
           cat site.xz.part.* > site.tar.xz.b64
           base64 --decode site.tar.xz.b64 > site.tar.xz
-          echo '53b8ca0f41c211b54d16a0937955fdef296547364002cbe7c8a46cb9a8b4ef15  site.tar.xz' | sha256sum -c -
+          echo '63f6ba2daf7ea348c0fbbcda7ac17aeb6f8818980d22a44dee4da4e7b446d2b5  site.tar.xz' | sha256sum -c -
           xz -dc site.tar.xz | tar -xf -
           test -f index.html
           test -f assets/css/styles.css
