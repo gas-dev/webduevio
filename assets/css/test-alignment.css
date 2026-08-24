@@ -14,7 +14,7 @@ body{
   letter-spacing:-.003em;
 }
 
-.container{width:min(calc(100% - 48px),var(--container))}
+.container{width:min(calc(100% - 48px),var(--container));margin:0 auto}
 .narrow{width:min(calc(100% - 48px),940px)}
 
 .site-header{
@@ -192,6 +192,24 @@ h1{
   box-shadow:0 14px 42px rgba(23,39,79,.16);
 }
 .modal{border-radius:10px}
+
+/* International language selector */
+.language-menu a{display:flex!important;align-items:center;gap:8px}
+.language-menu a::before{font-size:17px;line-height:1;display:inline-block;min-width:22px}
+.language-menu a[data-lang-link="en"]::before{content:"🇬🇧"}
+.language-menu a[data-lang-link="it"]::before{content:"🇮🇹"}
+.language-menu a[data-lang-link="mt"]::before{content:"🇲🇹"}
+.language-menu a[data-lang-link="de"]::before{content:"🇩🇪"}
+.language-menu a[data-lang-link="es"]::before{content:"🇪🇸"}
+.language-menu a[data-lang-link="fr"]::before{content:"🇫🇷"}
+.language-menu a[data-lang-link="ru"]::before{content:"🇷🇺"}
+html[data-lang="en"] .language-code::before{content:"🇬🇧 ";}
+html[data-lang="it"] .language-code::before{content:"🇮🇹 ";}
+html[data-lang="mt"] .language-code::before{content:"🇲🇹 ";}
+html[data-lang="de"] .language-code::before{content:"🇩🇪 ";}
+html[data-lang="es"] .language-code::before{content:"🇪🇸 ";}
+html[data-lang="fr"] .language-code::before{content:"🇫🇷 ";}
+html[data-lang="ru"] .language-code::before{content:"🇷🇺 ";}
 
 @media(max-width:1050px){
   .hero-grid{grid-template-columns:1fr 390px;gap:32px}
