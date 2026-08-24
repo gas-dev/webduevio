@@ -1,0 +1,35 @@
+name: Bootstrap Duevio site
+
+on:
+  push:
+    paths:
+      - 'site.ready'
+
+permissions:
+  contents: write
+
+jobs:
+  unpack:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Rebuild site files
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -f site.ready
+          cat site.part.* > site.tar.gz.b64
+          base64 --decode site.tar.gz.b64 > site.tar.gz
+          tar -xzf site.tar.gz
+          rm -f site.tar.gz site.tar.gz.b64 site.part.* site.ready
+      - name: Commit generated site
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "Duevio Site Builder"
+          git config user.email "actions@users.noreply.github.com"
+          git add -A
+          git commit -m "Build multilingual Duevio website"
+          git push
