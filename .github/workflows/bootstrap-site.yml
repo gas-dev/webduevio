@@ -22,11 +22,17 @@ jobs:
           test -f site.xz.ready
           cat site.xz.chunk.* > site.tar.xz.b64
           base64 --decode site.tar.xz.b64 > site.tar.xz
-          echo '63f6ba2daf7ea348c0fbbcda7ac17aeb6f8818980d22a44dee4da4e7b446d2b5  site.tar.xz' | sha256sum -c -
+          echo '393468276dc62f329e8faa970d33c6fdf12b4b563ba9c8e67f29a267ab07c3de  site.tar.xz' | sha256sum -c -
           xz -dc site.tar.xz | tar -xf -
           test -f index.html
           test -f assets/css/styles.css
           test -f assets/js/app.js
+          test -f assets/i18n/en.json
+          test -f assets/i18n/it.json
+          test -f assets/i18n/de.json
+          test -f assets/i18n/es.json
+          test -f assets/i18n/fr.json
+          test -f assets/i18n/ru.json
           test -f it/index.html
           test -f de/index.html
           test -f es/index.html
