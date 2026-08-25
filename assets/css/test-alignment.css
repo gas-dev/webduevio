@@ -22,7 +22,7 @@ body{
   backdrop-filter:none;
   border-bottom:1px solid #e6ebf1;
 }
-.header-inner{height:72px;gap:20px}
+.header-inner{height:72px;justify-content:flex-start;gap:0}
 .brand img{width:142px}
 .desktop-nav{gap:18px}
 .desktop-nav a{font-size:13.5px;font-weight:650;color:#38445a;padding:9px 0}
