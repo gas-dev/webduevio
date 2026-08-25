@@ -32,7 +32,7 @@ button{cursor:pointer}
 .site-header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.96);backdrop-filter:blur(14px);border-bottom:1px solid rgba(221,228,236,.85)}
 .header-inner{height:78px;display:flex;align-items:center;justify-content:flex-start;gap:0}
 .brand{flex:0 0 auto}.brand img{width:148px;height:auto}
-.desktop-nav{display:flex;align-items:center;gap:22px;margin-left:16px}
+.desktop-nav{display:flex;align-items:center;gap:22px;margin-left:30px}
 .desktop-nav a{font-size:14px;font-weight:650;color:#39455d;position:relative;padding:10px 0}
 .desktop-nav a:after{content:"";position:absolute;left:0;right:100%;bottom:3px;height:2px;background:var(--teal);transition:right .2s}
 .desktop-nav a:hover:after,.desktop-nav a.active:after{right:0}
