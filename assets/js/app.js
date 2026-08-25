@@ -117,6 +117,26 @@
     });
   }
 
+  function prepareParallax(){
+    const scenes=[...document.querySelectorAll('[data-parallax-scene]')];
+    if(!scenes.length||window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    let scheduled=false;
+    const update=()=>{
+      const viewport=window.innerHeight;
+      scenes.forEach(scene=>{
+        const rect=scene.getBoundingClientRect();
+        const progress=(viewport-rect.top)/(viewport+rect.height)-.5;
+        const offset=Math.max(-48,Math.min(48,progress*96));
+        scene.style.setProperty('--parallax-y',`${offset}px`);
+      });
+      scheduled=false;
+    };
+    const requestUpdate=()=>{if(!scheduled){scheduled=true;requestAnimationFrame(update);}};
+    update();
+    window.addEventListener('scroll',requestUpdate,{passive:true});
+    window.addEventListener('resize',requestUpdate);
+  }
+
   function updatePlanSummary(){
     const selected=document.querySelector('input[name="selectedPlan"]:checked')?.value||'Essential';
     const plan=document.getElementById('summaryPlan');
@@ -229,6 +249,7 @@
     await loadTranslations();
     prepareLanguageMenu();
     prepareMobileNav();
+    prepareParallax();
     prepareForms();
     preparePrivacyControls();
     showPage(currentRoute());
