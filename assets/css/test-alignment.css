@@ -28,8 +28,8 @@ body{
 .desktop-nav a{font-size:13.5px;font-weight:650;color:#38445a;padding:9px 0}
 .desktop-nav a:after{height:2px;bottom:1px}
 .header-actions{gap:8px}
-.language-button{height:36px;border-radius:7px;padding:0 9px}
-.language-menu{top:43px;border-radius:8px;box-shadow:0 12px 30px rgba(23,39,79,.12)}
+.language-button{height:32px;border-radius:7px;padding:0 7px;font-size:12px}
+.language-menu{top:39px;border-radius:8px;box-shadow:0 12px 30px rgba(23,39,79,.12)}
 
 .button{
   min-height:44px;
@@ -199,9 +199,9 @@ h1{
 .language-code::before{
   content:"";
   display:inline-block;
-  width:24px;
-  height:15px;
-  flex:0 0 24px;
+  width:20px;
+  height:13px;
+  flex:0 0 20px;
   background-size:cover;
   background-position:center;
   background-repeat:no-repeat;
@@ -210,7 +210,7 @@ h1{
   box-shadow:0 1px 2px rgba(23,39,79,.08);
   vertical-align:-2px;
 }
-.language-button .language-code{display:inline-flex;align-items:center;gap:7px;min-width:50px}
+.language-button .language-code{display:inline-flex;align-items:center;gap:5px;min-width:42px;font-size:12px}
 .language-menu a[data-lang-link="en"]::before,
 html[data-lang="en"] .language-code::before{background-image:url("../img/flags/en.svg")}
 .language-menu a[data-lang-link="it"]::before,
