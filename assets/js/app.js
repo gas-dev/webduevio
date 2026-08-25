@@ -4,7 +4,7 @@
   const html = document.documentElement;
   const lang = html.dataset.lang || 'en';
   const root = html.dataset.root || '';
-  const validPages = new Set(['home','product','industries','plans','signup','demo','privacy','cookies','ai','terms']);
+  const validPages = new Set(['home','product','industries','pricing','signup','demo','privacy','cookies','ai','terms']);
   const preferenceKey = 'duevio_privacy_preferences_v1';
   let messages = {};
 
