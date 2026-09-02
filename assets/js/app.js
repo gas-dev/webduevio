@@ -4,7 +4,7 @@
   const html = document.documentElement;
   const lang = html.dataset.lang || 'en';
   const root = html.dataset.root || '';
-  const validPages = new Set(['home','product','industries','pricing','signup','demo','privacy','cookies','ai','terms']);
+  const validPages = new Set(['home','product','industries','pricing','signup','enterprise','demo','privacy','cookies','ai','terms']);
   const preferenceKey = 'duevio_privacy_preferences_v1';
   let messages = {};
 
@@ -215,7 +215,31 @@
       }finally{
         if(submit) submit.disabled=false;
       }
+    });    const enterprise=document.getElementById('enterprise-form');
+    enterprise?.addEventListener('submit',async event=>{
+      event.preventDefault();
+      const status=document.getElementById('enterpriseStatus');
+      const copy=localeMessages[lang]||localeMessages.en;
+      const submit=enterprise.querySelector('button[type="submit"]');
+      if(!validateForm(enterprise)){if(status) status.textContent=copy.invalid;return;}
+      if(status) status.textContent=copy.demoSending||localeMessages.en.demoSending;
+      if(submit) submit.disabled=true;
+      try{
+        const response=await fetch('https://formsubmit.co/ajax/support@duevio.com',{
+          method:'POST',
+          headers:{'Accept':'application/json'},
+          body:new FormData(enterprise)
+        });
+        if(!response.ok) throw new Error('Enterprise request failed');
+        enterprise.reset();
+        if(status) status.textContent=copy.demoOk;
+      }catch{
+        if(status) status.textContent=copy.demoError||localeMessages.en.demoError;
+      }finally{
+        if(submit) submit.disabled=false;
+      }
     });
+
   }
 
   function readPreferences(){
