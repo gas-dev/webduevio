@@ -407,5 +407,7 @@
   "country.france": "Franza",
   "country.spain": "Spanja",
   "country.other": "Ieħor",
-  "plans.perMonthAnnual": "fix-xahar, imħallas kull sena"
+  "plans.perMonthAnnual": "fix-xahar, imħallas kull sena",
+  "plans.perMonth": "fix-xahar",
+  "plans.billedAnnually": "(ħlas annwali)"
 }
