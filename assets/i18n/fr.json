@@ -407,5 +407,7 @@
   "country.france": "France",
   "country.spain": "Espagne",
   "country.other": "Autre",
-  "plans.perMonthAnnual": "par mois, facturé annuellement"
+  "plans.perMonthAnnual": "par mois, facturé annuellement",
+  "plans.perMonth": "par mois",
+  "plans.billedAnnually": "(facturation annuelle)"
 }
