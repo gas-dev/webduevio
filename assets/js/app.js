@@ -9,8 +9,8 @@
   let messages = {};
 
   const localeMessages = {
-    en:{invalid:'Please complete all required fields and check that the passwords match.',signupOk:'Preview validated. Production checkout is not connected in this repository yet.',demoOk:'Preview validated. The production demo-request endpoint is not connected in this repository yet.',contact:'Contact us',users:'Agreed setup',requestSetup:'Request setup',commercialOk:'Preview validated. The production commercial follow-up endpoint is not connected in this repository yet.',next2Title:'Commercial follow-up',next2Text:'We review the selected plan, team size and implementation needs with you.',next3Title:'Implementation path',next3Text:'Agree setup, onboarding support and integration priorities before activation.'},
-    it:{invalid:'Completa tutti i campi obbligatori e verifica che le password coincidano.',signupOk:'Anteprima validata. Il checkout di produzione non è ancora collegato in questo repository.',demoOk:'Anteprima validata. L’endpoint di produzione per le richieste demo non è ancora collegato in questo repository.',contact:'Contattaci',users:'Configurazione concordata',requestSetup:'Richiedi configurazione',commercialOk:'Anteprima validata. L’endpoint di produzione per il contatto commerciale non è ancora collegato in questo repository.',next2Title:'Contatto commerciale',next2Text:'Verifichiamo con te piano scelto, dimensione del team ed esigenze di implementazione.',next3Title:'Percorso di implementazione',next3Text:'Concordiamo configurazione, supporto all’onboarding e priorità di integrazione prima dell’attivazione.'},
+    en:{invalid:'Please complete all required fields and check that the passwords match.',signupOk:'Preview validated. Production checkout is not connected in this repository yet.',demoOk:'Request sent successfully. We will contact you shortly.',demoError:'The request could not be sent. Please try again later.',demoSending:'Sending request…',contact:'Contact us',users:'Agreed setup',requestSetup:'Request setup',commercialOk:'Preview validated. The production commercial follow-up endpoint is not connected in this repository yet.',next2Title:'Commercial follow-up',next2Text:'We review the selected plan, team size and implementation needs with you.',next3Title:'Implementation path',next3Text:'Agree setup, onboarding support and integration priorities before activation.'},
+    it:{invalid:'Completa tutti i campi obbligatori e verifica che le password coincidano.',signupOk:'Anteprima validata. Il checkout di produzione non è ancora collegato in questo repository.',demoOk:'Richiesta inviata correttamente. Ti contatteremo a breve.',demoError:'Non è stato possibile inviare la richiesta. Riprova più tardi.',demoSending:'Invio richiesta…',contact:'Contattaci',users:'Configurazione concordata',requestSetup:'Richiedi configurazione',commercialOk:'Anteprima validata. L’endpoint di produzione per il contatto commerciale non è ancora collegato in questo repository.',next2Title:'Contatto commerciale',next2Text:'Verifichiamo con te piano scelto, dimensione del team ed esigenze di implementazione.',next3Title:'Percorso di implementazione',next3Text:'Concordiamo configurazione, supporto all’onboarding e priorità di integrazione prima dell’attivazione.'},
     mt:{invalid:'Jekk jogħġbok imla l-oqsma obbligatorji kollha u ċċekkja li l-passwords jaqblu.',signupOk:'Il-preview ġiet ivvalidata. Il-checkout tal-produzzjoni għadu mhux konness f’dan ir-repository.',demoOk:'Il-preview ġiet ivvalidata. L-endpoint tal-produzzjoni għat-talbiet tad-demo għadu mhux konness f’dan ir-repository.',contact:'Ikkuntattjana',users:'Setup miftiehem',requestSetup:'Itlob setup',commercialOk:'Il-preview ġiet ivvalidata. Il-follow-up kummerċjali tal-produzzjoni għadu mhux konness f’dan ir-repository.',next2Title:'Follow-up kummerċjali',next2Text:'Nirrevedu miegħek il-pjan magħżul, id-daqs tat-tim u l-ħtiġijiet ta’ implementazzjoni.',next3Title:'Triq ta’ implementazzjoni',next3Text:'Naqblu fuq setup, appoġġ għall-onboarding u prijoritajiet ta’ integrazzjoni qabel l-attivazzjoni.'},
     de:{invalid:'Bitte füllen Sie alle Pflichtfelder aus und prüfen Sie, ob die Passwörter übereinstimmen.',signupOk:'Vorschau validiert. Der produktive Checkout ist in diesem Repository noch nicht angebunden.',demoOk:'Vorschau validiert. Der produktive Endpunkt für Demo-Anfragen ist in diesem Repository noch nicht angebunden.',contact:'Kontakt aufnehmen',users:'Vereinbarte Konfiguration',requestSetup:'Einrichtung anfragen',commercialOk:'Vorschau validiert. Der produktive Endpunkt für die kommerzielle Abstimmung ist in diesem Repository noch nicht angebunden.',next2Title:'Kommerzielle Abstimmung',next2Text:'Wir prüfen mit Ihnen Tarif, Teamgröße und Implementierungsbedarf.',next3Title:'Implementierungsweg',next3Text:'Vereinbaren Sie Einrichtung, Onboarding-Support und Integrationsprioritäten vor der Aktivierung.'},
     es:{invalid:'Completa todos los campos obligatorios y comprueba que las contraseñas coincidan.',signupOk:'Vista previa validada. El checkout de producción todavía no está conectado en este repositorio.',demoOk:'Vista previa validada. El endpoint de producción para solicitudes de demo todavía no está conectado en este repositorio.',contact:'Contactar',users:'Configuración acordada',requestSetup:'Solicitar configuración',commercialOk:'Vista previa validada. El endpoint de producción para seguimiento comercial todavía no está conectado en este repositorio.',next2Title:'Seguimiento comercial',next2Text:'Revisamos contigo el plan elegido, el tamaño del equipo y las necesidades de implantación.',next3Title:'Ruta de implantación',next3Text:'Acordamos configuración, soporte de onboarding y prioridades de integración antes de la activación.'},
@@ -193,12 +193,28 @@
     });
     signup?.addEventListener('reset',()=>setTimeout(()=>{const status=document.getElementById('signupStatus');if(status) status.textContent='';updatePlanSummary();},0));
     const demo=document.getElementById('demo-form');
-    demo?.addEventListener('submit',event=>{
+    demo?.addEventListener('submit',async event=>{
       event.preventDefault();
       const status=document.getElementById('demoStatus');
       const copy=localeMessages[lang]||localeMessages.en;
+      const submit=demo.querySelector('button[type="submit"]');
       if(!validateForm(demo)){if(status) status.textContent=copy.invalid;return;}
-      if(status) status.textContent=copy.demoOk;
+      if(status) status.textContent=copy.demoSending||localeMessages.en.demoSending;
+      if(submit) submit.disabled=true;
+      try{
+        const response=await fetch('https://formsubmit.co/ajax/support@duevio.com',{
+          method:'POST',
+          headers:{'Accept':'application/json'},
+          body:new FormData(demo)
+        });
+        if(!response.ok) throw new Error('Demo request failed');
+        demo.reset();
+        if(status) status.textContent=copy.demoOk;
+      }catch{
+        if(status) status.textContent=copy.demoError||localeMessages.en.demoError;
+      }finally{
+        if(submit) submit.disabled=false;
+      }
     });
   }
 
