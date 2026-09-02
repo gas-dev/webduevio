@@ -406,5 +406,6 @@
   "country.germany": "Deutschland",
   "country.france": "Frankreich",
   "country.spain": "Spanien",
-  "country.other": "Andere"
+  "country.other": "Andere",
+  "plans.perMonthAnnual": "pro Monat, bei jährlicher Zahlung"
 }
