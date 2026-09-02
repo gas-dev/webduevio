@@ -406,5 +406,6 @@
   "country.germany": "Germany",
   "country.france": "France",
   "country.spain": "Spain",
-  "country.other": "Other"
+  "country.other": "Other",
+  "plans.perMonthAnnual": "per month, billed annually"
 }
