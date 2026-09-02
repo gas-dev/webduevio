@@ -11,7 +11,6 @@
   "cta.explore": "Esplora Duevio",
   "cta.seePlans": "Ara l-prezzijiet",
   "cta.startNow": "Ibda issa",
-
   "home.eyebrow": "Sistema internazzjonali għall-operat AML",
   "home.title": "Operazzjonijiet AML taħt kontroll, mill-onboarding sal-awditjar.",
   "home.lead": "Duevio jagħti lil ditti regolati workspace wieħed biex jimmaniġġjaw KYC, fajls tal-klijenti, sjieda, reviżjonijiet, kompiti u evidenza tul iċ-ċiklu tal-klijent.",
@@ -84,7 +83,6 @@
   "home.trust3Text": "Żomm azzjonijiet u deċiżjonijiet marbuta mal-fajl tal-klijent u mal-persuni responsabbli.",
   "home.trust4Title": "Ibda b’mod sempliċi",
   "home.trust4Text": "Ibda online b’Essential u mbagħad għaddi għal setup iggwidat jew personalizzat hekk kif tikber l-organizzazzjoni.",
-
   "product.eyebrow": "Prodott",
   "product.title": "Workspace AML strutturat għall-onboarding, monitoring u evidenza.",
   "product.lead": "Immaniġġja n-naħa operattiva tal-compliance AML f’ambjent wieħed, mill-ewwel intake tal-klijent sa reviżjoni perjodika, remediation u produzzjoni ta’ evidenza.",
@@ -150,7 +148,6 @@
   "product.int4": "Repositories tad-dokumenti",
   "product.int5": "CRM, core u sistemi ta’ onboarding",
   "product.int6": "API u enterprise connection layer",
-
   "industries.eyebrow": "Setturi",
   "industries.title": "Setturi differenti. Kontrolli differenti. Mod aktar ċar biex tmexxi x-xogħol AML.",
   "industries.lead": "Duevio huwa maħsub għal negozji regolati u ditti professjonali li jeħtieġu onboarding ikkontrollat, fajls KYC ħajjin, reviżjonijiet rikorrenti u evidenza li tista’ tinġabar malajr.",
@@ -195,7 +192,6 @@
   "industries.s6a": "Punt ta’ dħul sempliċi",
   "industries.s6b": "Reġistrazzjoni online",
   "industries.s6c": "Triq għall-upgrade",
-
   "plans.eyebrow": "Prezzijiet",
   "plans.title": "Ieqaf timmaniġġja x-xogħol AML f’fajls u reminders separati.",
   "plans.lead": "Ibda online b’Duevio Essential, agħżel setup Professional iggwidat, jew iddisinja deployment Enterprise personalizzat għal operazzjonijiet aktar kumplessi.",
@@ -234,7 +230,6 @@
   "plans.discussEnterprise": "Iddiskuti Enterprise",
   "payment.accepted": "Metodi ta’ ħlas aċċettati",
   "payment.secure": "Id-dettalji tal-card u PayPal jiġu pproċessati mill-payment provider u ma jinħażnux f’dan is-sit ta’ marketing.",
-
   "signup.eyebrow": "Reġistrazzjoni",
   "signup.title": "Agħżel il-pjan Duevio li jaqbel mal-organizzazzjoni tiegħek.",
   "signup.lead": "Essential huwa self-service. Oħloq l-account, lesti l-ħlas u iftaħ il-workspace tiegħek. Professional u Enterprise jibdew b’diskussjoni kummerċjali u ta’ implementazzjoni iggwidata.",
@@ -278,7 +273,6 @@
   "signup.next2Text": "Essential ikompli għand il-payment provider.",
   "signup.next3Title": "Aċċess għall-workspace",
   "signup.next3Text": "Iftaħ il-workspace Essential tiegħek wara l-ħlas.",
-
   "demo.eyebrow": "Demo",
   "demo.title": "Ara kif Duevio jidħol fil-mudell operattiv AML tiegħek.",
   "demo.lead": "Uża discovery call biex tirrevedi l-onboarding attwali, l-istruttura tal-fajl KYC, il-proċess ta’ reviżjoni u r-rekwiżiti ta’ evidenza, u mbagħad identifika l-aħjar punt tat-tluq.",
@@ -301,7 +295,6 @@
   "demo.formTitle": "Itlob discovery call",
   "demo.formNeed": "X’tixtieq tirrevedi?",
   "demo.submit": "Itlob demo",
-
   "legal.terms": "Termini tas-Servizz",
   "legal.privacy": "Avviż dwar il-Privatezza",
   "legal.cookies": "Politika dwar Cookies",
@@ -330,7 +323,6 @@
   "privacy.p9": "Duevio għandu japplika miżuri tekniċi u organizzattivi xierqa għar-riskju, inklużi access control, logging, secure transport, vulnerability management u data minimisation.",
   "privacy.h10": "10. Kuntatt",
   "privacy.p10": "Id-dettalji verifikati tal-controller u tal-kuntatt tal-privatezza għandhom jiddaħħlu hawn qabel il-produzzjoni.",
-
   "cookies.title": "Politika dwar cookies u storage",
   "cookies.updated": "Verżjoni: 24 ta’ Awwissu 2026",
   "cookies.h1": "1. Storage essenzjali",
@@ -343,7 +335,6 @@
   "cookies.openSettings": "Settings tal-cookies",
   "cookies.h5": "5. Inventarju tal-produzzjoni",
   "cookies.p5": "Qabel il-produzzjoni, għandhom jiġu vverifikati l-cookies, local-storage keys u teknoloġiji ta’ third parties u din il-politika għandha tiġi aġġornata.",
-
   "ai.title": "Trasparenza tal-AI u użu responsabbli",
   "ai.updated": "Verżjoni: 24 ta’ Awwissu 2026",
   "ai.h1": "1. Ambitu",
@@ -360,7 +351,6 @@
   "ai.p6": "Funzjonalità AI li tipproċessa data personali tibqa’ soġġetta għall-GDPR, inklużi lawful basis, trasparenza, minimisation, security, retention u automated decision-making.",
   "ai.h7": "7. Valutazzjoni speċifika tal-funzjoni",
   "ai.p7": "Qabel modulu assistit mill-AI jitqiegħed fil-produzzjoni, l-iskop, inputs, outputs, utenti u impatt fuq id-deċiżjonijiet għandhom jiġu dokumentati biex jiġu determinati l-obbligi applikabbli.",
-
   "terms.title": "Termini tas-Servizz",
   "terms.updated": "Abbozz għar-reviżjoni tal-produzzjoni · 24 ta’ Awwissu 2026",
   "terms.requiredTitle": "Meħtieġ qabel il-produzzjoni",
@@ -385,7 +375,6 @@
   "terms.p9": "Il-ftehim tal-produzzjoni għandu jinkludi provisions dwar warranties, exclusions u liability riveduti legalment skont l-entità kuntrattwali u l-liġi applikabbli.",
   "terms.h10": "10. Liġi applikabbli u kuntatt",
   "terms.p10": "Daħħal l-entità kuntrattwali verifikata, governing law, ġurisdizzjoni u dettalji formali ta’ kuntatt qabel l-użu fil-produzzjoni.",
-
   "footer.tagline": "Operazzjonijiet AML għall-onboarding, fajls KYC, reviżjonijiet, workflow u evidenza.",
   "footer.product": "Prodott",
   "footer.legal": "Legali",
@@ -417,5 +406,6 @@
   "country.germany": "Ġermanja",
   "country.france": "Franza",
   "country.spain": "Spanja",
-  "country.other": "Ieħor"
+  "country.other": "Ieħor",
+  "plans.perMonthAnnual": "fix-xahar, imħallas kull sena"
 }
