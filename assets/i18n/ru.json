@@ -406,5 +406,6 @@
   "country.germany": "Германия",
   "country.france": "Франция",
   "country.spain": "Испания",
-  "country.other": "Другое"
+  "country.other": "Другое",
+  "plans.perMonthAnnual": "в месяц, при ежегодной оплате"
 }
