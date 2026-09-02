@@ -407,5 +407,7 @@
   "country.france": "Francia",
   "country.spain": "España",
   "country.other": "Otro",
-  "plans.perMonthAnnual": "al mes, con pago anual"
+  "plans.perMonthAnnual": "al mes, con pago anual",
+  "plans.perMonth": "al mes",
+  "plans.billedAnnually": "(pago anual)"
 }
