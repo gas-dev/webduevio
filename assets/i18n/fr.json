@@ -406,5 +406,6 @@
   "country.germany": "Allemagne",
   "country.france": "France",
   "country.spain": "Espagne",
-  "country.other": "Autre"
+  "country.other": "Autre",
+  "plans.perMonthAnnual": "par mois, facturé annuellement"
 }
