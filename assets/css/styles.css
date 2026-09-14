@@ -113,3 +113,59 @@ h1{margin:0;color:var(--navy);font-size:clamp(40px,5.2vw,68px);line-height:1.04;
 .enterprise-form textarea{resize:vertical}
 
 .demo-form:not(.enterprise-form) .checkbox{margin-bottom:20px}
+
+/* Privacy Notice legal-basis table */
+.legal-body .privacy-table-wrap{
+  margin:24px 0 32px;
+  overflow-x:auto;
+  border:1px solid #dbe3ec;
+  border-radius:14px;
+  background:#fff;
+  box-shadow:0 10px 30px rgba(34,56,111,.08);
+}
+.legal-body .privacy-table{
+  width:100%;
+  min-width:720px;
+  table-layout:fixed;
+  border-collapse:separate;
+  border-spacing:0;
+  background:#fff;
+}
+.legal-body .privacy-table th{
+  padding:15px 18px;
+  background:var(--navy);
+  color:#fff;
+  font-size:13px;
+  font-weight:800;
+  line-height:1.35;
+  letter-spacing:.04em;
+  text-align:left;
+  text-transform:uppercase;
+}
+.legal-body .privacy-table th:first-child{width:46%}
+.legal-body .privacy-table td,
+.legal-body .privacy-table td:first-child,
+.legal-body .privacy-table td:nth-child(2),
+.legal-body .privacy-table td:nth-child(3){
+  padding:15px 18px;
+  border-bottom:1px solid #e5eaf0;
+  color:#344054;
+  font-size:14px;
+  font-weight:400;
+  line-height:1.55;
+  text-align:left;
+  vertical-align:top;
+}
+.legal-body .privacy-table td:first-child{
+  color:var(--navy);
+  font-weight:700;
+}
+.legal-body .privacy-table tbody tr:nth-child(even){background:#f7f9fc}
+.legal-body .privacy-table tbody tr:last-child td{border-bottom:0}
+@media (max-width:700px){
+  .legal-body .privacy-table{min-width:620px}
+  .legal-body .privacy-table th,
+  .legal-body .privacy-table td,
+  .legal-body .privacy-table td:first-child,
+  .legal-body .privacy-table td:nth-child(2){padding:13px 14px}
+}
